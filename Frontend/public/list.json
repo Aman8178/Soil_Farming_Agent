@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Loamy soil",
+        "title": "Loamy soil, rich in organic matter",
+        "link": "https://example.com/loamy-soil",
+        "category": "Free",
+        "image": "https://img.freepik.com/free-vector/loamy-soil-crosssection-illustration_1308-165768.jpg?ga=GA1.1.704087454.1704797943&semt=ais_hybrid"
+    },
+    {
+        "id": 2,
+        "name": "Clay soil",
+        "title": "Clay soil, retains water well",
+        "link": "https://example.com/clay-soil",
+        "category": "Suitable for legumes",
+        "image": "https://img.freepik.com/free-vector/vector-illustration-clay-soil-heap_1308-165195.jpg?ga=GA1.1.704087454.1704797943&semt=ais_hybrid"
+    },
+    {
+        "id": 3,
+        "name": "Sandy soil",
+        "title": "Sandy soil, well-draining",
+        "link": "https://example.com/sandy-soil",
+        "category": "Free",
+        "image": "https://image.shutterstock.com/image-photo/plowed-sandy-soil-raise-into-260nw-2035824488.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Peaty soil",
+        "title": "Peaty soil, high in moisture",
+        "link": "https://example.com/peaty-soil",
+        "category": "Suitable for leafy greens",
+        "image": "https://image.shutterstock.com/image-photo/texture-peaty-fertile-soil-flowers-260nw-2004771539.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Saline soil",
+        "title": "Saline soil, requires drainage",
+        "link": "https://example.com/saline-soil",
+        "category": "Suitable for salt-tolerant plants",
+        "image": "https://image.shutterstock.com/image-photo/soil-microorganisms-close-under-microscope-260nw-2361070587.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Chalky soil",
+        "title": "Chalky soil, alkaline",
+        "link": "https://example.com/chalky-soil",
+        "category": "Suitable for plants requiring high pH",
+        "image": "https://image.shutterstock.com/image-photo/background-image-chalky-limestone-soil-260nw-102517589.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Humus-rich",
+        "title": "Humus-rich soil, fertile",
+        "link": "https://example.com/humus-rich-soil",
+        "category": "Free",
+        "image": "https://image.shutterstock.com/image-photo/soil-closeup-background-texture-structure-260nw-2016395099.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Silty soil",
+        "title": "Silty soil, fertile",
+        "link": "https://example.com/silty-soil",
+        "category": "Free",
+        "image": "https://image.shutterstock.com/image-photo/natural-silty-soil-background-brown-260nw-234187528.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Rocky soil",
+        "title": "Rocky soil, well-draining",
+        "link": "https://example.com/rocky-soil",
+        "category": "Suitable for drought-resistant plants",
+        "image": "https://img.freepik.com/free-photo/view-undiscovered-planet-universe_23-2149240585.jpg?ga=GA1.1.704087454.1704797943&semt=ais_hybrid"
+    },
+    {
+        "id": 10,
+        "name": "Heavy soil",
+        "title": "Heavy soil, requires drainage",
+        "link": "https://example.com/heavy-soil",
+        "category": "Suitable for plants needing good water retention",
+        "image": "https://img.freepik.com/free-photo/empty-mountain-ground-with-clear-sky_23-2148248983.jpg?ga=GA1.1.704087454.1704797943&semt=ais_hybrid"
+    }
+]
