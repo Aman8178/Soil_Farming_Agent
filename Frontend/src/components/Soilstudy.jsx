@@ -1,9 +1,24 @@
-import React from 'react';
-import list from "../../public/list.json";
+import React, { useEffect, useState } from 'react';
 import Cards from './Cards';
 import { Link } from 'react-router-dom';
+import axios from "axios" 
 
 function Soilstudy() {
+
+  const [soil, setSoil]=useState([]);
+  useEffect(()=>{
+    const getSoil=async()=>{
+      try{
+        const res=await axios.get("http://localhost:4001/soil")
+        console.log(res.data);
+        setSoil(res.data);
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+    getSoil();
+  }, [])
   return (
     <>
       <div className='px-8'>
@@ -22,7 +37,7 @@ function Soilstudy() {
           </Link>
         </div>
         <div className='mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
-          {list.map((item) => (
+          {soil.map((item) => (
             <Cards key={item.id} item={item} />
           ))}
         </div>

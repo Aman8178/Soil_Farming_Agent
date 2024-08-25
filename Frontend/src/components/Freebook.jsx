@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import list from "../../public/list.json"
 import Slider from "react-slick";
 import Cards from './Cards';
-
+import axios from 'axios';
 function Freebook() {
-    const filterData=list.filter((data)=>data.category=='Free')
-    var settings = {
+  const [soil, setSoil]=useState([]);
+  useEffect(()=>{
+    const getSoil=async()=>{
+      try{
+        const res=await axios.get("http://localhost:4001/soil")
+        setSoil(res.data.filter((data)=>data.category=='Free'));
+        console.log(res.data.filter((data)=>data.category=='Free'));
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+    getSoil();
+  }, [])
+   var settings = {
         dots: true,
         infinite: false,
         speed: 500,
@@ -50,7 +62,7 @@ function Freebook() {
       
       </div>
       <Slider {...settings}>
-        {filterData.map((item)=>(  
+        {soil.map((item)=>(  
             <Cards item={item} key={item.id} />
         ))}
       </Slider>

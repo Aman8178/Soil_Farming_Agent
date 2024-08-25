@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import Login from './Login';
+import axios from "axios"
+import toast from 'react-hot-toast';
 
 function Signup() {
   const {
@@ -11,9 +13,26 @@ function Signup() {
   } = useForm();
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit =async (data) => {
     // Handle form submission logic here
+    const userInfo={
+      fullname:data.fullname,
+      email:data.email,
+      password:data.password
+    }
+    await axios.post("http://localhost:4001/user/signup", userInfo)
+    .then((res)=>{
+      console.log(res.data);
+      if(res.data){
+        toast.success('Signup succesfull!');
+      }
+      localStorage.setItem("users", JSON.stringify(res.data.user))
+    }).catch((err)=>{
+      if(err.response){
+        console.log(err);
+        toast.error("Error: " + err.response.data.message)
+      }
+    })
   };
 
   return (
@@ -33,10 +52,10 @@ function Signup() {
                   type="text"
                   className="w-80 px-3 py-1 outline-none border rounded-md"
                   placeholder="Enter your Full Name"
-                  {...register("name", { required: "Name is required" })}
+                  {...register("fullname", { required: "Name is required" })}
                 />
                 <br />
-                {errors.name && <span className="text-red-500">{errors.name.message}</span>}
+                {errors.fullname && <span className="text-red-500">{errors.name.message}</span>}
               </div>
               <div className="mt-4 space-y-2">
                 <span>Email</span>
