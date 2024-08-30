@@ -57,7 +57,7 @@ function Freebook() {
   return (
     <div className='px-8'>
       <div>
-      <h1 className='font-bold text-xl pb-2'>Free offered Course</h1>
+      <h1 className='font-bold text-xl pb-2'>Something new</h1>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla esse illo deleniti vel sed dolor, illum officia consequatur enim? Accusantium quis quibusdam nobis nisi alias sunt magnam rerum ea? Ipsam?</p>
       
       </div>
