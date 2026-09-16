@@ -4,12 +4,13 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Cards from './Cards';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 function Freebook() {
   const [soil, setSoil]=useState([]);
   useEffect(()=>{
     const getSoil=async()=>{
       try{
-        const res=await axios.get("http://localhost:4001/soil")
+        const res=await axios.get(`${API_BASE_URL}/soil`)
         setSoil(res.data.filter((data)=>data.category=='Free'));
         console.log(res.data.filter((data)=>data.category=='Free'));
       }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Cards from './Cards';
 import { Link } from 'react-router-dom';
 import axios from "axios" 
+import { API_BASE_URL } from '../config/api';
 
 function Soilstudy() {
 
@@ -9,7 +10,7 @@ function Soilstudy() {
   useEffect(()=>{
     const getSoil=async()=>{
       try{
-        const res=await axios.get("http://localhost:4001/soil")
+        const res=await axios.get(`${API_BASE_URL}/soil`)
         console.log(res.data);
         setSoil(res.data);
       }

@@ -4,31 +4,50 @@ import mongoose from "mongoose";
 import cors from "cors";
 import soilRoute from "./route/soil.route.js"
 import userRoute from "./route/user.route.js"
-const app = express()
-
-app.use(cors());
-app.use(express.json());
 
 dotenv.config();
 
-const PORT=process.env.PORT || 4000;
+const app = express();
+const PORT = Number.parseInt(process.env.PORT, 10) || 4000;
+const mongoDbUri = process.env.MongoDBURI;
+const allowedOrigins = (process.env.CLIENT_ORIGIN || "http://localhost:5173")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
-//connect to mogoDB
-
-const URI=process.env.MongoDBURI;
-
-try{
-    mongoose.connect(URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    });
-    console.log("connected to mongo db")
-}catch(error){
-    console.log("Error", error);
+if (!mongoDbUri) {
+  throw new Error("MongoDBURI environment variable is required");
 }
-//defining routes
-app.use("/soil", soilRoute)
-app.use("/user", userRoute)
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`)
-})
+
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("Origin not allowed by CORS"));
+  },
+}));
+app.use(express.json());
+
+app.get("/health", (_req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
+app.use("/soil", soilRoute);
+app.use("/user", userRoute);
+
+async function startServer() {
+  try {
+    await mongoose.connect(mongoDbUri);
+    console.log("Connected to MongoDB");
+    app.listen(PORT, () => {
+      console.log(`Server is listening on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to start server", error);
+    process.exit(1);
+  }
+}
+
+startServer();

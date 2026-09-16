@@ -1,1 +1,18 @@
-.vercel
+# Dependencies and build artifacts
+**/node_modules/
+**/dist/
+**/dist-ssr/
+coverage/
+
+# Environment files (commit .env.example files only)
+**/.env
+**/.env.*
+!**/.env.example
+
+# Hosting, logs, and local tooling
+**/.vercel/
+*.log
+*.local
+.DS_Store
+.idea/
+.vscode/
