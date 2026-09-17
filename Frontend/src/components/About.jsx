@@ -38,7 +38,7 @@ function AboutUs() {
 
         <h2 className="text-3xl font-semibold text-green-600 mb-6">Contact Us</h2>
         <p className="text-lg leading-relaxed">
-          We are here to help! If you have any questions or need support, please feel free to reach out to us at <a href="mailto:kunal@gmail.com" className="text-blue-500 hover:underline">kunal@gmail.com</a>. Follow us on social media for the latest updates and farming tips.
+          We are here to help! If you have any questions or need support, please feel free to reach out to us at <a href="mailto:support@soilfarmingagent.com" className="text-green-600 hover:underline">support@soilfarmingagent.com</a>. Follow us on social media for the latest updates and farming tips.
         </p>
       </div>
     </div>

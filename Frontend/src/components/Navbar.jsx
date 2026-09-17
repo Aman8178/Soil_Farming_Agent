@@ -44,13 +44,16 @@ function Navbar() {
                 <Link to="/">Home</Link>
             </li>
             <li>
-                <Link to="/course">Soilstudy</Link>
+                <a href="/#advisor-agent">Soil Advisor</a>
+            </li>
+            <li>
+                <Link to="/course">Soil Directory</Link>
+            </li>
+            <li>
+                <Link to="/aboutus">About Us</Link>
             </li>
             <li>
                 <Link to="/contactus">Contact Us</Link>
-            </li>
-            <li>
-                <Link to="/aboutus">About Us</Link>  {/* Add link to About Us */}
             </li>
         </>
     );
@@ -82,7 +85,9 @@ function Navbar() {
                                 {navItems}
                             </ul>
                         </div>
-                        <a className="text-2xl font-bold">Soilfarming</a>
+                        <Link to="/" className="text-xl md:text-2xl font-extrabold text-green-700 dark:text-green-400 flex items-center gap-2">
+                          🌱 Soil Farming Agent
+                        </Link>
                     </div>
                     <div className="navbar-end flex items-center space-x-3">
                         <div className="navbar-center hidden lg:flex">
