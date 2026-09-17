@@ -10,10 +10,20 @@ dotenv.config();
 const app = express();
 const PORT = Number.parseInt(process.env.PORT, 10) || 4000;
 const mongoDbUri = process.env.MongoDBURI;
-const allowedOrigins = (process.env.CLIENT_ORIGIN || "http://localhost:5173")
+// CLIENT_ORIGIN supports a comma-separated list. Keep the known production
+// frontend in the defaults so the API still works when the Render environment
+// variable has not been configured yet.
+const defaultAllowedOrigins = [
+  "http://localhost:5173",
+  "https://soil-farming-agent.vercel.app",
+  "https://soil-farming-agent.onrender.com",
+];
+
+const configuredOrigins = (process.env.CLIENT_ORIGIN || "")
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
+const allowedOrigins = [...new Set([...defaultAllowedOrigins, ...configuredOrigins])];
 
 if (!mongoDbUri) {
   throw new Error("MongoDBURI environment variable is required");
@@ -25,6 +35,7 @@ app.use(cors({
       return callback(null, true);
     }
 
+    console.warn(`Blocked CORS request from origin: ${origin}`);
     return callback(new Error("Origin not allowed by CORS"));
   },
 }));
