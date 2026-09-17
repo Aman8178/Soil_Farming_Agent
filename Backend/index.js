@@ -29,15 +29,34 @@ if (!mongoDbUri) {
   throw new Error("MongoDBURI environment variable is required");
 }
 
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true; // Allow non-browser requests (e.g. mobile apps, curl, server-to-server)
+  if (allowedOrigins.includes(origin)) return true;
+
+  try {
+    const { hostname } = new URL(origin);
+    // Dynamically allow all Vercel production and preview deployment URLs
+    if (hostname.endsWith(".vercel.app")) return true;
+    // Allow Render service domains
+    if (hostname.endsWith(".onrender.com")) return true;
+    // Allow local development on any port
+    if (hostname === "localhost" || hostname === "127.0.0.1") return true;
+  } catch {
+    return false;
+  }
+  return false;
+};
+
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (isAllowedOrigin(origin)) {
       return callback(null, true);
     }
 
     console.warn(`Blocked CORS request from origin: ${origin}`);
-    return callback(new Error("Origin not allowed by CORS"));
+    return callback(null, false);
   },
+  credentials: true,
 }));
 app.use(express.json());
 
