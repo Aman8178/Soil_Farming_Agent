@@ -87,22 +87,34 @@ function Freebook() {
   };
 
   return (
-    <div className='px-8 py-10'>
-      <div className='mb-6'>
-        <h2 className='font-bold text-2xl md:text-3xl text-green-700 pb-2'>
-          Featured Soil & Crop Insights
-        </h2>
-        <p className='text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed'>
-          Explore foundational soil classifications, nutrient profiles, and recommended farming practices designed to maximize harvest yield and sustain long-term soil vitality.
-        </p>
+    <section className="py-12 md:py-20 px-4 md:px-8 max-w-7xl mx-auto">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <span className="inline-block px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/70 border border-emerald-200 dark:border-emerald-800/60 rounded-full mb-2.5">
+            Curated Knowledge Base
+          </span>
+          <h2 className="font-extrabold text-2xl sm:text-3xl md:text-4xl text-slate-900 dark:text-white tracking-tight">
+            Featured Soil & Crop Insights
+          </h2>
+          <p className="text-slate-600 dark:text-slate-300 max-w-2xl text-sm sm:text-base mt-2 leading-relaxed">
+            Explore foundational soil classifications, nutrient profiles, and recommended farming practices designed to maximize harvest yield and sustain long-term soil vitality.
+          </p>
+        </div>
+        <a
+          href="/course"
+          className="btn btn-sm md:btn-md btn-outline border-emerald-600 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-600 hover:text-white rounded-xl font-semibold self-start md:self-auto shrink-0 transition-all duration-200"
+        >
+          View Full Directory →
+        </a>
       </div>
+
       <Slider {...settings}>
         {soil.map((item, index) => (
           <Cards item={item} key={item._id || item.id || index} />
         ))}
       </Slider>
-    </div>
+    </section>
   );
 }
 
-export default Freebook
+export default Freebook;

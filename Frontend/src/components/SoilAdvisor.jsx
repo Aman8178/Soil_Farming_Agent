@@ -71,8 +71,9 @@ export default function SoilAdvisor() {
   };
 
   return (
-    <div id="advisor-agent" className="py-12 px-4 md:px-8 bg-gradient-to-b from-green-50/50 to-white dark:from-slate-900 dark:to-slate-800 rounded-3xl my-10 border border-green-100 dark:border-slate-700 shadow-sm">
-      <div className="max-w-5xl mx-auto">
+    <section id="advisor-agent" className="py-12 md:py-20 px-4 md:px-8 max-w-7xl mx-auto">
+      <div className="bg-gradient-to-b from-emerald-50/70 via-white to-white dark:from-slate-800/80 dark:via-slate-900 dark:to-slate-900 rounded-3xl p-6 md:p-12 border border-emerald-100 dark:border-slate-700/80 shadow-xl shadow-emerald-900/5">
+        <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10">
           <span className="badge badge-success text-white font-semibold py-3 px-4 mb-3 uppercase tracking-wide">
             Interactive AI Decision Agent
@@ -218,5 +219,6 @@ export default function SoilAdvisor() {
         </div>
       </div>
     </div>
-  );
+  </section>
+);
 }
