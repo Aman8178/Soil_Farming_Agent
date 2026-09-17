@@ -49,33 +49,32 @@
 
 ```mermaid
 flowchart TD
-    subgraph Client["Frontend (Vercel)"]
-        UI["React 18 + Vite SPA"]
-        Tailwind["Tailwind CSS + DaisyUI"]
-        Advisor["Soil Advisor Agent"]
-        Axios["Axios HTTP Client"]
+    subgraph Frontend [Frontend - Vercel]
+        UI[React 18 + Vite SPA]
+        Advisor[Soil Advisor Agent]
+        Axios[Axios HTTP Client]
     end
 
-    subgraph Server["Backend (Render)"]
-        Express["Express.js Server"]
-        CORS["Dynamic Multi-Origin CORS"]
-        Routes["REST API Routes (/soil, /user, /health)"]
-        Bcrypt["BCrypt Authentication"]
+    subgraph Backend [Backend - Render]
+        CORS[Dynamic Multi-Origin CORS]
+        Express[Express.js Engine]
+        Auth[BCrypt Authentication]
+        APIs[REST API Endpoints]
     end
 
-    subgraph Database["Cloud Database (MongoDB Atlas)"]
-        SoilColl[("Soil Collection")]
-        UserColl[("Users Collection")]
+    subgraph Database [Database - MongoDB Atlas]
+        SoilDB[(Soil Collection)]
+        UserDB[(User Collection)]
     end
 
     UI --> Advisor
     UI --> Axios
-    Axios -->|HTTPS REST Requests| CORS
+    Axios -->|HTTPS REST| CORS
     CORS --> Express
-    Express --> Routes
-    Routes --> Bcrypt
-    Routes --> SoilColl
-    Routes --> UserColl
+    Express --> APIs
+    APIs --> Auth
+    APIs --> SoilDB
+    APIs --> UserDB
 ```
 
 ---
